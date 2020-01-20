@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gfl.dao.EmpVoDao">
+
+    <select resultType="java.lang.Long" id="queryEmpCount">
+        select count(e.id) from t_emp  e
+        left join t_job j on e.jobId=j.id
+        left join t_dept d on e.deptId=d.id
+        left join t_leader l on e.leaderId=l.id
+    </select>
+
+    <select resultType="com.gfl.bean.vo.EmpVo" id="queryEmpList" parameterType="com.gfl.bean.DataTable">
+         select * from t_emp  e
+         left join t_job j on e.jobId=j.id
+         left join t_dept d on e.deptId=d.id
+         left join t_leader l on e.leaderId=l.id
+         limit #{start},#{length}
+    </select>
+
+    <select id="queryisEmpName" resultType="com.gfl.bean.vo.EmpVo">
+        select * from t_emp where empName=#{empName} and deptId=#{deptId}
+    </select>
+</mapper>
