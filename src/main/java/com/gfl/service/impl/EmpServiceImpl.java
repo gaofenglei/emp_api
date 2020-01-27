@@ -65,4 +65,28 @@ public class EmpServiceImpl implements EmpService {
         return empVo;
     }
 
+    @Override
+    public void deleteEmp(Integer id) {
+        QueryWrapper<EmpVo> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("id",id);
+        empVoDao.delete(queryWrapper);
+    }
+
+    @Override
+    public List<Emp> queryEmpAll() {
+        return empVoDao.queryEmpAll();
+    }
+
+    @Override
+    public Emp getEmpById(Integer id) {
+        QueryWrapper<Emp> queryWrapper=new QueryWrapper<Emp>();
+        queryWrapper.eq("id",id);
+        return empDao.selectOne(queryWrapper);
+    }
+
+    @Override
+    public void updateEmp(Emp emp) {
+        empDao.updateById(emp);
+    }
+
 }

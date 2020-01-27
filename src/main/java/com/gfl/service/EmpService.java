@@ -22,4 +22,12 @@ public interface EmpService {
     void addEmp(Emp emp);
 
     EmpVo queryisEmpName(Integer deptId, String empName);
+
+    void deleteEmp(Integer id);
+
+    List<Emp> queryEmpAll();
+
+    Emp getEmpById(Integer id);
+
+    void updateEmp(Emp emp);
 }

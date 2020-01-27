@@ -20,4 +20,11 @@
     <select id="queryisEmpName" resultType="com.gfl.bean.vo.EmpVo">
         select * from t_emp where empName=#{empName} and deptId=#{deptId}
     </select>
+
+    <select resultType="com.gfl.bean.vo.EmpVo" id="queryEmpAll">
+        select * from t_emp  e
+        left join t_job j on e.jobId=j.id
+        left join t_dept d on e.deptId=d.id
+        left join t_leader l on e.leaderId=l.id
+    </select>
 </mapper>
